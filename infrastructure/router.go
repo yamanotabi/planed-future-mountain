@@ -16,10 +16,10 @@ func Init() {
 		return c.JSON(http.StatusOK, "Hello, Mountain")
 	})
 
-	api.POST(plan.Path, func(c echo.Context) error { return planController.Create(c) })
-	api.PUT(plan.Path+"/:"+plan.Id, func(c echo.Context) error { return planController.Edit(c) })
-	api.GET(plan.Path+"/:"+plan.Id, func(c echo.Context) error { return planController.Show(c) })
-	api.DELETE(plan.Path+"/:"+plan.Id, func(c echo.Context) error { return planController.Delete(c) })
+	api.POST(plan.Path, planController.Create)
+	api.PUT(plan.Path+"/:"+plan.Id, planController.Edit)
+	api.GET(plan.Path+"/:"+plan.Id, planController.Show)
+	api.DELETE(plan.Path+"/:"+plan.Id, planController.Delete)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }
